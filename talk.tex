@@ -1,0 +1,267 @@
+\documentclass[xcolor={dvipsnames,table}]{beamer}
+%\documentclass[handout]{beamer}
+
+\geometry{paperwidth=190mm,paperheight=118.75mm}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+%\usetheme{Singapore}
+\usecolortheme{default}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{nicefrac}
+\usepackage{pifont}
+\usepackage{braket}
+\usepackage{colortbl}
+%\usepackage{wrapfig}
+%\usepackage{cutwin}
+\usepackage{background}
+\backgroundsetup{
+    %placement=bottom,
+    position={5.5,-0.3},
+    scale=2.5,
+    angle=0,
+    pages=some,
+    contents={MI250 PRELIMINARY}
+}
+\usetikzlibrary{arrows,shapes}
+\urlstyle{same}
+\definecolor{mygreen}{rgb}{0, 0.4, 0}
+\usepackage{cancel}
+\usepackage[detect-none]{siunitx}
+\sisetup{range-phrase = \text{--}}
+
+\usepackage[most]{tcolorbox}
+
+\input{commands}
+
+%compact itemize, perfect for talks
+\setlength{\leftmargin}{0pt}
+\setlength{\leftmargini}{0.4cm}
+\setlength{\leftmarginii}{0.2cm}
+
+\usefonttheme{professionalfonts} 
+
+\newcommand{\roundbox}[1]{%
+\noindent\begin{tikzpicture}%
+  \draw node[draw=lightgray,fill=white,rounded corners,inner sep=1ex] {%
+  #1
+  };%
+\end{tikzpicture}%
+}%
+
+\definecolor{DarkBlue}{HTML}{002e77}
+
+\usetheme{Boadilla}
+\usecolortheme[named=DarkBlue]{structure}
+\useinnertheme{rounded}
+
+\graphicspath{{graphics/}}
+
+\title[Reweight]{Reweight}
+\author[M.~Garofalo ]{M.~Garofalo}
+\institute[HISKP , Bonn~U.]{Helmholtz-Institut für Strahlen- und Kernphysik (HISKP) 
+\\ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn}
+\date[August, ETMC meeting 2025 Bonn]{August , ETMC meeting 2025, Bonn}
+\titlegraphic{{\includegraphics[height=2.5cm]{Logo_ETMC_RGB.pdf}}}
+% \subject{Twisted mass ensemble generation on GPU machines (using tmLQCD and the QUDA library)}
+% \keywords{Lattice QCD, HMC, GPU, QUDA, simulation, tmLQCD}
+
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+  \begin{itemize}\setlength\itemsep{1em}
+    \item<1-> $\{g^{sim}, m_0^{sim},\mu_l^{sim},\mu_s^{sim}, \mu_c^{sim}  \}$ parameters of the simulations
+    \item<2-> $\{a^{iso}, m_0^{iso},\mu_l^{iso},\mu_s^{iso}, \mu_c^{iso}  \}$ parameters that satisfy the Edinburgh/FLAG consensus values:
+      \begin{gather}
+        % \label{scheme_edi/FLAG}
+        \nonumber
+        f_{\pi} = 130.5~\text{MeV} \qquad M_{\pi} = 135.0~\text{MeV} \qquad M_{K} = 494.6~\text{MeV} \qquad M_{D_s} = 1967~\text{MeV}\,.
+      \end{gather}
+    \item<3-> Mismatch $iso/sim$ in the valence
+      \vspace{1em}
+      \begin{itemize}\setlength\itemsep{1em}
+        \item Unitary analysis for $f_\pi$ and $M_\pi$
+        \item For Other observable many valence point and interpolation
+      \end{itemize}
+
+
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Mismatch $iso/sim$ in the sea}
+  \begin{itemize}\setlength\itemsep{1em}
+    \item<1-> Loops
+      $$\langle O \rangle_{\mu^{iso}}  =\langle O \rangle_{\mu^{sim}} + (\mu^{iso}-\mu^{sim})
+        \bigg(\langle O  S[\mu^{sim}]\rangle_{\mu^{sim}} - \langle O \rangle \langle S[\mu^{sim}]\rangle_{\mu^{sim}} \bigg)$$
+      \vspace{1em}
+      \begin{itemize}\setlength\itemsep{1em}
+        \item<1-> Derivative at $\mu^{sim}$
+          $$
+            \frac{\partial \langle O \rangle_{\mu} }
+            { \partial_\mu } \bigg|_{\mu^{sim}}
+            =\langle O  S[\mu^{sim}]\rangle_{\mu^{sim}} - \langle O \rangle \langle S[\mu^{sim}]\rangle_{\mu^{sim}}
+          $$
+        \item<2-> Pseudo-derivative at $\mu^{*}$
+          $$
+            \frac{\partial \langle O \rangle_{\mu} }
+            { \partial_\mu } \bigg|_{\mu^{*}}
+            =\langle O  S[\mu^{*}]\rangle_{\mu^{sim}} - \langle O \rangle \langle S[\mu^{*}]\rangle_{\mu^{sim}}
+          $$
+      \end{itemize}
+    \item<3-> Reweighting
+      $$
+        \langle O \rangle_{\mu^{iso}}   = \langle O  \frac{\det{D(\mu^{iso})}}{\det{D(\mu^{sim})}}\rangle_{\mu^{sim}}
+      $$
+      \begin{itemize}\setlength\itemsep{1em}
+        \item<3-> Derivative at $\mu^*$
+          $$
+            \frac{\partial \langle O \rangle_{\mu} }
+            { \partial_\mu } \bigg|_{\mu^{sim}}
+            =\frac{1}{\epsilon}\left(\langle O  \frac{\det{D(\mu^{sim}+\epsilon)}}{\det{D(\mu^{sim})}}\rangle_{\mu^{sim}}  - \langle O \rangle_{\mu^{sim}}\right)
+          $$
+        \item<4-> Pseudo-erivative at $\mu^*$
+          $$
+            \frac{\partial \langle O \rangle_{\mu} }
+            { \partial_\mu } \bigg|_{\mu^{*}}
+            =\frac{1}{\epsilon}\left(\langle O  \frac{\det{D(\mu^{*}+\epsilon)}}{\det{D(\mu^{*})}}\rangle_{\mu^{sim}}  - \langle O \rangle_{\mu^{sim}}\right)
+          $$
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item The non-degenerate doublet has  parameters $\mu_\sigma$ and $\mu_\delta$ which are matched
+          to $\mu_s$ and $\mu_c$ as
+          \begin{gather*}
+            \mu_c^{sim} = \mu_\sigma + \frac{Z_P}{Z_S} \mu_\delta \\
+            aM_K^{Unitary}(\mu_\sigma,\mu_\delta) = aM_K^{OS}(\mu_s^{sim})
+          \end{gather*}
+    \item<2-> Both loops and reweighing use
+      $$
+        \frac{\det{D_{tm}(\mu_s,\mu_c)}}{\det{D_{OS}(\mu_s)\det{D_{OS}(\mu_c)}}} = 1 + \mathcal{O}(a^2)
+      $$
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{scale setting}
+  \begin{itemize}
+    \item To correct $f_\pi$ and $M_\pi$ in $m_0$ we use the analytic formulae
+          \begin{align*}
+            F_{\pi}(m_{\rm PCAC}=0)   & =F_{\pi}(m_{\rm PCAC})\sqrt{1+(Z_A m_{\rm PCAC}/ m_\ell)^2}               \\
+            M_{\pi}^2(m_{\rm PCAC}=0) & = \frac{M_{\pi}^2(m_{\rm PCAC})}{\sqrt{1+(Z_A m_{\rm PCAC}/m_\ell)^2}}\,,
+          \end{align*}
+    \item<2-> Unitary anlysis, no need of $\mu_\ell$ correction
+    \item<3->  To correct in $\mu_s$ and $\mu_c$ we evaluated the pseudo-derivative at several $\mu$
+      \begin{center}
+        \includegraphics[scale=0.5]{plots/der_fpi_B64.pdf}
+      \end{center}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item renormalized quantity $\mu_\ell  \frac{\partial f_\pi }{\partial\mu}$ computed for more lattice spacing
+  \end{itemize}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item fit $\mu_\ell  \frac{\partial f_\pi }{\partial\mu} = P_0\frac{1}{\mu} +P_1\frac{1}{\mu^2}+P_2\frac{1}{\mu^2}$
+        \item $\chi^2/d.o.f=2$
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item<2-> Rescale errors such $\chi^2/d.o.f=1$
+        \item<2-> Equivalent of rescaling the fit parameters error $\tilde P = P \sqrt{\chi^2/d.o.f}$
+      \end{itemize}
+    \end{column}
+  \end{columns}
+
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \includegraphics[scale=0.5]{plots/der_fpi_fit.pdf}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \uncover<2->{\includegraphics[scale=0.5]{plots/der_fpi_fit_chi2d1.pdf}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item Same procedure for $M_\pi$\\
+              \includegraphics[scale=0.5]{plots/der_Mpi_fit_chi2d1.pdf}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{tabular}{c|c|c|c|c}
+        ensemble & $\Delta_s f_\pi / \sigma_{f_\pi}$ & $\Delta_c f_\pi / \sigma_{f_\pi}$ \\
+        B64      & 0.69                              & 0.36                              \\
+        C80      & -1.2                              & 0.67                              \\
+        D96      & 0.46                              & 0.89                              \\
+        E112     & 0.45                              & -0.27
+      \end{tabular}
+      \vspace*{1cm}\,
+      \begin{tabular}{c|c|c|c|c}
+        ensemble & $\Delta_s M_\pi / \sigma_{M_\pi}$ & $\Delta_c M_\pi / \sigma_{M_\pi}$ \\
+        B64      & 0.10                              & 0.06                              \\
+        C80      & -0.16                             & 0.11                              \\
+        D96      & 0.05                              & 0.13                              \\
+        E112     & 0.05                              & -0.04
+      \end{tabular}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item Unitary analysis
+          \begin{align*}
+            aF_{\pi}(\xi_{\pi}, \beta) & =  a\overline{F}_{\pi}(\beta) \cdot \left\{1-2\xi_{\pi}\log(\xi_{\pi}/\xi_{\pi}^{\rm iso})+ [P+P_{disc} (aF_\pi(\xi_{\pi},\beta))^2] (\xi_{\pi}-\xi^{\rm iso}_{\pi})\right\}
+          \end{align*}
+          \includegraphics[scale=0.5]{plots/fpi_rew}
+          \includegraphics[scale=0.5]{plots/scaling_a}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item Unitary analysis
+          \begin{align*}
+            aF_{\pi}(\xi_{\pi}, \beta) & =  a\overline{F}_{\pi}(\beta) \cdot \left\{1-2\xi_{\pi}\log(\xi_{\pi}/\xi_{\pi}^{\rm iso})+ [P+P_{disc} (aF_\pi(\xi_{\pi},\beta))^2] (\xi_{\pi}-\xi^{\rm iso}_{\pi})\right\}
+          \end{align*}
+          \includegraphics[scale=0.5]{plots/fpi_rew}
+          \includegraphics[scale=0.5]{plots/scaling_a}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item Unitary analysis
+          \begin{align*}
+            am_{\ell}(\xi_{\pi},\beta) & = a\overline{m}_{\ell}(\beta) \frac{\xi_{\pi}}{\xi_{\pi}^{\rm iso}} \cdot \left\{ 1 + 5\xi_{\pi}\log(\xi_{\pi}/\xi_{\pi}^{\rm iso}) + (B+a^2B_{disc})(\xi_{\pi} -\xi_{\pi}^{\rm iso}) \right\}^{-1}
+          \end{align*}
+          \includegraphics[scale=0.5]{plots/Mpi_rew}
+          \includegraphics[scale=0.5]{plots/ml_scaling}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item scale setting trough $w_0$ BMW ($\Omega$)
+    \item<2-> in progress
+  \end{itemize}
+\end{frame}
+
+\end{document}
