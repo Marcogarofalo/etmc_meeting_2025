@@ -1,0 +1,39 @@
+# LaTeX intermediate and output files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+*.xdv
+*.pdf
+*.dvi
+*.ps
+
+# Build directories
+_build/
+build/
+latex.out/
+*.acn
+*.glo
+*.gls
+*.ist
+*.xdy
+
+# Editor backup files
+*~
+*.bak
+*.swp
+*.swo
+*.tmp
+
+# MacOS files
+.DS_Store
