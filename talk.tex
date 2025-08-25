@@ -59,7 +59,7 @@
 
 \graphicspath{{graphics/}}
 
-\title[Reweight]{Reweight}
+\title[Correction of quark mass misstuning]{Correction of quark mass misstuning}
 \author[M.~Garofalo ]{M.~Garofalo}
 \institute[HISKP , Bonn~U.]{Helmholtz-Institut für Strahlen- und Kernphysik (HISKP) 
 \\ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn}
@@ -141,9 +141,19 @@
     \item The non-degenerate doublet has  parameters $\mu_\sigma$ and $\mu_\delta$ which are matched
           to $\mu_s$ and $\mu_c$ as
           \begin{gather*}
-            \mu_c^{sim} = \mu_\sigma + \frac{Z_P}{Z_S} \mu_\delta \\
-            aM_K^{Unitary}(\mu_\sigma,\mu_\delta) = aM_K^{OS}(\mu_s^{sim})
+            \mu_c = \mu_\sigma + \frac{Z_P}{Z_S} \mu_\delta 
           \end{gather*}
+          \begin{gather*}
+           \alt<1>{\mu_s = \mu_\sigma - \frac{Z_P}{Z_S} \mu_\delta }
+           {\cancel{ 
+            \mu_s = \mu_\sigma - \frac{Z_P}{Z_S} \mu_\delta }
+            }
+          \end{gather*}
+          \uncover<2->{
+          \begin{gather*}
+            aM_K^{Unitary}(\mu_\sigma,\mu_\delta) = aM_K^{OS}(\mu_s)
+          \end{gather*}
+          }
     \item<2-> Both loops and reweighing use
       $$
         \frac{\det{D_{tm}(\mu_s,\mu_c)}}{\det{D_{OS}(\mu_s)\det{D_{OS}(\mu_c)}}} = 1 + \mathcal{O}(a^2)
