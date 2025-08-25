@@ -234,6 +234,148 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{insignificance of sea mass mistunings on $M_K$ and $M_{D_s}$}
+  Same procedure for $M_K$ and $M_{D_s}$, but slightly different implementation: 
+  \begin{itemize}
+  \item constant fit between the three (available) ensembles for $\ell$- and $s$-contributions
+  \item fit $\mu_\ell  \frac{\partial M }{\partial\mu} = P_0\frac{1}{\mu^2}+P_1\frac{1}{\mu^2}$ in the range $\mu_s\le\mu\le\mu_c$ to evaluate the $c$-contribution
+  \item all the errors rescaled with $\sqrt{\chi^2_\mathrm{red}}$ when $\chi^2_\mathrm{red}>1$ 
+  \end{itemize}
+\begin{columns}
+    \begin{column}{0.5\textwidth}
+       \begin{center}
+       % Tabella per m_l
+       \begin{tabular}{l|c|c}
+       Ensemble
+       & $\Delta_{\ell}M_{K}$ [MeV]
+       & $\Delta_{\ell}M_{K}/\sigma_{M_{K}}$ \\
+       B64  & $0.0275(245)$ & $0.0773$ \\
+       C80  & $0.0080(71)$  & $0.0147$ \\
+       D96  & $0.0327(291)$ & $0.0457$ \\
+       \end{tabular}
+       \vspace*{0.2cm}\,
+       \\
+       % Tabella per m_s
+       \begin{tabular}{l|c|c}
+       Ensemble
+       & $\Delta_{s}M_{K}$ [MeV]
+       & $\Delta_{s}M_{K}/\sigma_{M_{K}}$ \\
+       B64  & $0.0689(543)$  & $0.193$ \\
+       C80  & $-0.111(87)$   & $-0.203$ \\
+       D96  & $0.0361(284)$  & $0.0504$ \\
+       \end{tabular}
+       \vspace*{0.2cm}\,
+       \\
+       % Tabella per m_c
+       \begin{tabular}{l|c|c}
+       Ensemble
+       & $\Delta_{c}M_{K}$ [MeV]
+       & $\Delta_{c}M_{K}/\sigma_{M_{K}}$ \\
+       B64  & $0.0071(221)$  & $0.0200$ \\
+       C80  & $0.0097(303)$  & $0.0178$ \\
+       D96  & $-0.0111(346)$ & $-0.0155$ \\
+       \end{tabular}
+       \end{center}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \begin{center}
+    % Tabella per m_l
+    \begin{tabular}{l|c|c}
+    Ensemble
+    & $\Delta_{\ell}M_{D_s}$ [MeV]
+    & $\Delta_{\ell}M_{D_s}/\sigma_{M_{D_s}}$ \\
+    B64  & $0.0340(333)$ & $0.02766$ \\
+    C80  & $0.0099(97)$  & $0.00495$ \\
+    D96  & $0.0404(395)$ & $0.01473$ \\
+    \end{tabular}
+    \vspace*{0.2cm}\,
+    \\
+    % Tabella per m_s
+    \centering
+    \begin{tabular}{l|c|c}
+    Ensemble
+    & $\Delta_{s}M_{D_s}$ [MeV]
+    & $\Delta_{s}M_{D_s}/\sigma_{M_{D_s}}$ \\
+    B64  & $0.288(125)$  & $0.234$ \\
+    C80  & $-0.463(200)$ & $-0.231$ \\
+    D96  & $0.151(65)$   & $0.05499$ \\
+    \end{tabular}
+    \vspace*{0.2cm}\,
+    \\
+    % Tabella per m_c
+    \centering
+    \begin{tabular}{l|c|c}
+    Ensemble
+    & $\Delta_{c}M_{D_s}$ [MeV]
+    & $\Delta_{c}M_{D_s}/\sigma_{M_{D_s}}$ \\
+    B64  & $0.0642(603)$  & $0.05215$ \\
+    C80  & $0.0879(83)$   & $0.0439$ \\
+    D96  & $-0.100(94)$   & $-0.0366$ \\
+    \end{tabular}
+    \end{center}
+    \end{column}
+  \end{columns}
+\vspace*{0.1cm}\,
+\begin{itemize}
+    \item As shown, all the contributions are negligible wrt the errors on the meson masses (the sum of all the contributions is negligible as well).
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+    
+   \begin{columns}
+       \begin{column}{0.5\textwidth}
+        {\small $$\mu_\ell \frac{\partial M_{K}}{\partial \mu_\ell} = -0.35(31); \qquad\frac{\chi^2}{\rm d.o.f}= 0.1$$}
+        \includegraphics[trim=0cm 0.5cm 0cm 1.3cm, clip,width=\textwidth]{plots/const_fit_MK_der_ml.png}
+        \vspace*{-0.8cm} \,\\
+        {\small $$\mu_\ell \frac{\partial M_{K}}{\partial \mu_s} = -0.11(9); \qquad\frac{\chi^2}{\rm d.o.f}= 1.3$$}
+        \includegraphics[trim=0cm 0.5cm 0cm 1.3cm, clip,width=\textwidth]{plots/const_fit_MK_der_ms.png}
+       \end{column}
+       \begin{column}{0.5\textwidth}
+        {\small $$\mu_\ell \frac{\partial M_{D_s}}{\partial \mu_\ell} = -0.43(42); \qquad\frac{\chi^2}{\rm d.o.f}= 0.1$$}
+        \includegraphics[trim=0cm 0.5cm 0cm 1.3cm, clip,width=\textwidth]{plots/const_fit_MD_der_ml.png}
+        \vspace*{-0.8cm} \,\\
+        {\small $$\mu_\ell \frac{\partial M_{D_s}}{\partial \mu_s} = -0.46(20); \qquad\frac{\chi^2}{\rm d.o.f}= 3.19$$}
+        \includegraphics[trim=0cm 0.5cm 0cm 1.3cm, clip,width=\textwidth]{plots/const_fit_MD_der_ms.png}
+       \end{column}
+   \end{columns}
+\end{frame}
+
+\begin{frame}
+   \begin{columns}
+       \begin{column}{0.5\textwidth}
+        {\small $$\mu_\ell \frac{\partial M_K}{\partial \mu_c} = -0.0016(49); \qquad\frac{\chi^2}{\rm d.o.f}= 2.0$$}
+        \includegraphics[trim=0cm 0.5cm 0cm 1.3cm, clip,width=\textwidth]{plots/deco_fit_MK_der_mc.png}
+       \end{column}
+       \begin{column}{0.5\textwidth}
+        {\small $$\mu_\ell \frac{\partial M_{D_s}}{\partial \mu_c} = -0.014(13); \qquad\frac{\chi^2}{\rm d.o.f}= 5.3$$}
+        \includegraphics[trim=0cm 0.5cm 0cm 1.3cm, clip,width=\textwidth]{plots/deco_fit_MD_der_mc.png}
+       \end{column}
+   \end{columns}
+   These results are obtained using the fit ansatz:
+   \[
+   \mu_\ell  \frac{\partial M }{\partial\mu} = P_0\frac{1}{\mu^2}+P_1\frac{1}{\mu^2},
+   \]
+   and are those used to produce the tables above. For comparison, we also tried to fit with the same ansatz used for $M_\pi$ and $f_\pi$ and $f_\pi$. Plots and discussion in the next slide.
+\end{frame}
+\begin{frame}
+   \begin{columns}
+       \begin{column}{0.5\textwidth}
+        {\small $$\mu_\ell \frac{\partial M_K}{\partial \mu_c} = -0.0077(80); \qquad\frac{\chi^2}{\rm d.o.f}= 1.44$$}
+        \includegraphics[trim=0cm 0.5cm 0cm 1.3cm, clip,width=\textwidth]{plots/deco_fit_MK_der_mc_lin_term.png}
+       \end{column}
+       \begin{column}{0.5\textwidth}
+        {\small $$\mu_\ell \frac{\partial M_{D_s}}{\partial \mu_c} = 0.034(18); \qquad\frac{\chi^2}{\rm d.o.f}= 3.78$$}
+        \includegraphics[trim=0cm 0.5cm 0cm 1.3cm, clip,width=\textwidth]{plots/deco_fit_MD_der_mc_lin_term.png}
+       \end{column}
+   \end{columns}
+   
+   These results are obtained using the fit ansatz:
+   \[
+   \mu_\ell  \frac{\partial M }{\partial\mu} = P_0\frac{1}{\mu}+P_1\frac{1}{\mu^2}+P_2\frac{1}{\mu^3}.
+   \]
+   We obtain similar results for the derivative w.r.t $\mu_s$; for the derivatives w.r.t. $\mu_c$, these results are, respectively, 5 times and 3 times larger for $M_K$ and $M_{D_s}$. Even so, almost all the shifts would be negligible w.r.t. the errors on the meson masses. The only exception being the shift on $M_K$ in the \texttt{B64} ensemble: $\Delta_{\ell+s+c}M_K\simeq0.4\sigma_{M_K}$.
+\end{frame}
 \begin{frame}
   \begin{itemize}
     \item Unitary analysis
@@ -268,4 +410,169 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Sea mass mistunings on $a_\mu^\mathrm{HVP}(\ell)^\mathrm{conn}$}
+    \begin{itemize}
+        \item the derivative of $a_\mu^\mathrm{HVP}(\ell)^\mathrm{conn}$ is given by
+        \[
+        \partial^\mathrm{sea}_{\mu_q}a_\mu^\mathrm{HVP}(\ell)^\mathrm{conn} = \int_0^\infty dt \, t^2 \, K(t\ m_\mu) \,\, \partial^\mathrm{sea}_{\mu_q}<V_k(\ell)\, V_k(\ell)>^\mathrm{conn}
+        \]
+        \\ \
+        \item $\partial^\mathrm{sea}_{\mu_q}<V_k(\ell)\, V_k(\ell)>^\mathrm{conn}$ is computed using the reweighting factors;\\ \
+        \item the time integration must be performed carefully, to avoid putting in too much noise;\\ \
+        \item then, the renormalized quantity $\mu_\ell\frac{\partial a_\mu^\mathrm{HVP}(\ell)^\mathrm{conn}}{\partial \mu}$ can be compared among different ensembles (as before);\\ \
+        \item we use results from both the TM and OS discretizations to increase statistics (taking care of the correlations);\\ \
+        \item we perform a constant fit of the derivatives for the $\ell$ and $s$ contributions, and a "decoupling-inspired" fit for the $c$ contribution.
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    For the $\ell$-contribution, we integrate up to the t-cut selected for $a_\mu^\mathrm{HVP}(\ell)^\mathrm{SIM}$ with the ETM bounding method.
+    \begin{columns}
+    \begin{column}{0.5\textwidth}
+     \includegraphics[trim=0cm 0.3cm 0cm 1.2cm, clip,width=\textwidth]{plots/der_mq_sea_lore/amu_B64_tm_der_001ml.png}
+     \includegraphics[trim=0cm 0.3cm 0cm 1.2cm, clip,width=\textwidth]{plots/der_mq_sea_lore/amu_C80_tm_der_001ml.png}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+     \includegraphics[trim=0cm 0.3cm 0cm 1.2cm, clip,width=\textwidth]{plots/der_mq_sea_lore/amu_B64_OS_der_001ml.png}
+     \includegraphics[trim=0cm 0.3cm 0cm 1.2cm, clip,width=\textwidth]{plots/der_mq_sea_lore/amu_C80_OS_der_001ml.png}
+    \end{column}
+   \end{columns}
+\end{frame}
+\begin{frame}
+    For the $\ell$-contribution, we integrate up to the t-cut selected for $a_\mu^\mathrm{HVP}(\ell)^\mathrm{SIM}$ with the ETM bounding method.\vfill \,
+
+    \
+
+    \
+    
+    \
+    
+    \begin{columns}
+    \begin{column}{0.5\textwidth}
+     \includegraphics[trim=0cm 0.3cm 0cm 1.2cm, clip,width=\textwidth]{plots/der_mq_sea_lore/amu_D96_tm_der_001ml.png}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+     \includegraphics[trim=0cm 0.3cm 0cm 1.2cm, clip,width=\textwidth]{plots/der_mq_sea_lore/amu_D96_OS_der_001ml.png}
+    \end{column}
+   \end{columns}
+   \
+
+   \
+
+   \
+
+   \
+\end{frame}
+\begin{frame}
+ Heavier quarks contributions: we fit a plateau in $a_\mu$ vs $t_c$ where we can see a signal. (sorry for the color choice)
+    \begin{columns}
+    \begin{column}{0.5\textwidth}
+     \includegraphics[trim=0cm 0.3cm 0cm 1.2cm, clip,width=\textwidth]{plots/der_mq_sea_lore/amu_B64_tm_der_026ml.png}
+     \includegraphics[trim=0cm 0.3cm 0cm 1.2cm, clip,width=\textwidth]{plots/der_mq_sea_lore/amu_C80_tm_der_028ml.png}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+     \includegraphics[trim=0cm 0.3cm 0cm 1.2cm, clip,width=\textwidth]{plots/der_mq_sea_lore/amu_B64_OS_der_026ml.png}
+     \includegraphics[trim=0cm 0.3cm 0cm 1.2cm, clip,width=\textwidth]{plots/der_mq_sea_lore/amu_C80_OS_der_028ml.png}
+    \end{column}
+   \end{columns}
+\end{frame}
+\begin{frame}
+ Heavier quarks contributions: we fit a plateau in $a_\mu$ vs $t_c$ where we can see a signal. (sorry for the color choice)\vfill \,
+
+    \
+
+    \
+    
+    \
+    
+    \begin{columns}
+    \begin{column}{0.5\textwidth}
+     \includegraphics[trim=0cm 0.3cm 0cm 1.2cm, clip,width=\textwidth]{plots/der_mq_sea_lore/amu_D96_tm_der_027ml.png}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+     \includegraphics[trim=0cm 0.3cm 0cm 1.2cm, clip,width=\textwidth]{plots/der_mq_sea_lore/amu_D96_OS_der_027ml.png}
+    \end{column}
+   \end{columns}
+   \
+
+   \
+
+   \
+
+   \
+\end{frame}
+\begin{frame}
+\centering
+    For the $\ell$- and $s$-contributions, we performed a constant fit
+    
+    \
+    
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+     \includegraphics[trim=0cm 0.3cm 0cm 1.2cm, clip,width=\textwidth]{plots/der_mq_sea_lore/fit_amu_der_ml_full.png}
+
+        $$\mu_\ell\times\partial^\mathrm{sea}_{\mu_\ell}a^\mathrm{HVP}_\mu(\ell)^\mathrm{conn}\times10^{10} = -22.9(7.0)$$
+        
+        $$\chi^2_\mathrm{red}=3.2$$
+        \end{column}
+        \begin{column}{0.5\textwidth}
+     \includegraphics[trim=0cm 0.3cm 0cm 1.2cm, clip,width=\textwidth]{plots/der_mq_sea_lore/fit_amu_der_ms_full.png}
+        $$\mu_\ell\times\partial^\mathrm{sea}_{\mu_s}a^\mathrm{HVP}_\mu(\ell)^\mathrm{conn}\times10^{10} = 0.070(325)$$
+        
+        $$\chi^2_\mathrm{red}=4.4$$
+        \end{column}
+    \end{columns}
+    All the errors have already been rescaled with $\sqrt{\chi^2_\mathrm{red}}$
+\end{frame}
+\begin{frame}
+\centering
+    For the $c$-contribution, we performed a decoupling-inspired fit with the ansatz
+    \[
+   \mu_\ell  \frac{\partial a_\mu^\mathrm{HVP}(\ell)^\mathrm{conn} }{\partial\mu} = P_0\frac{1}{\mu^2}+P_1\frac{1}{\mu^2},
+    \]
+    
+    \
+    
+     \includegraphics[trim=0cm 0.3cm 0cm 1.2cm, clip,width=0.6\textwidth]{plots/der_mq_sea_lore/fit_amu_der_mc_full.png}
+
+        $$\mu_\ell\times\partial^\mathrm{sea}_{\mu_c}a^\mathrm{HVP}_\mu(\ell)^\mathrm{conn}\times10^{10} = 0.014(15)$$
+        
+        $$\chi^2_\mathrm{red}=5.98$$
+
+        \
+        
+    All the errors have already been rescaled with $\sqrt{\chi^2_\mathrm{red}}$
+\end{frame}
+\begin{frame}
+    Summarizing, the computed derivatives are
+
+    \
+    
+    \begin{flalign*}
+    \mu_\ell\times\partial^\mathrm{sea}_{\mu_\ell}a^\mathrm{HVP}_\mu(\ell)^\mathrm{conn}\times10^{10}& = -22.9(7.0),\\
+    \mu_\ell\times\partial^\mathrm{sea}_{\mu_s}a^\mathrm{HVP}_\mu(\ell)^\mathrm{conn}\times10^{10}& = 0.070(325),\\
+    \mu_\ell\times\partial^\mathrm{sea}_{\mu_c}a^\mathrm{HVP}_\mu(\ell)^\mathrm{conn}\times10^{10}& = 0.014(15).
+    \end{flalign*}
+
+    \
+
+    \
+    
+    from which one can compute the shifts on the observable, listed in the table.
+
+    \
+    \begin{center}
+        \begin{tabular}{c|c|c|c|c|c|c}
+ & $\Delta^\mathrm{sea}_{\mu_l}$ & $\sigma(\Delta^\mathrm{sea}_{\mu_l})$& $\Delta^\mathrm{sea}_{\mu_s}$ & $\sigma(\Delta^\mathrm{sea}_{\mu_s})$ & $\Delta^\mathrm{sea}_{\mu_c}$ & $\sigma (\Delta^\mathrm{sea}_{\mu_c})$\\
+\hline
+\texttt{B64} &1.8235 & 0.5590 & 0.0443 & 0.2051  & 0.0632 &0.0694\\
+\hline         
+\texttt{C80} &0.5312 & 0.1628 & -0.0712	& 0.3295 & 0.0865 &0.0951\\
+\hline         
+\texttt{D96} &2.1630 & 0.6631 & 0.0232	& 0.1073  & -0.0987 &0.1085 \\
+\hline         
+\texttt{E112}&0.4999 & 0.1533 & -0.0473	& 0.2191  & -0.0473 &0.0520 \\
+\hline
+\end{tabular}
+    \end{center}
+\end{frame}
 \end{document}
